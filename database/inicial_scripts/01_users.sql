@@ -6,5 +6,5 @@ CREATE TABLE `DBCEUAZUL`.`users` (
   `email` VARCHAR(45) NULL,
   `created` DATETIME NULL,
   `modified` DATETIME NULL,
-  `isadmin` VARCHAR(45) NULL,
+  `allows` VARCHAR(45) NULL,
   PRIMARY KEY (`iduser`));

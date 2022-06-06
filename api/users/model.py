@@ -1,3 +1,4 @@
+from flask import jsonify
 from .. import db
 
 class Users(db.Model):
@@ -8,18 +9,18 @@ class Users(db.Model):
     email = db.Column(db.String(45))
     created = db.Column(db.DateTime)
     modified = db.Column(db.DateTime)
-    isadmin = db.Column(db.String(45))
+    allows = db.Column(db.String(45))
 
-def userrepr(self):
-    return {'iduser': self.iduser,
-            'username': self.username,
-            'password': self.password,
-            'name': self.name,
-            'email': self.email,
-            'created': self.created,
-            'modified': self.modified,
-            'isadmin': self.isadmin}
+    def __repr__(self):
+        return repr({'iduser': self.iduser,
+                'username': self.username,
+                'password': self.password,
+                'name': self.name,
+                'email': self.email,
+                'created': self.created,
+                'modified': self.modified,
+                'allows': self.allows})
 
-def returnall():
-    r = db.session.query(Users).first()
-    return r
+    def returnall():
+        r = db.session.query(Users).all()
+        return r
