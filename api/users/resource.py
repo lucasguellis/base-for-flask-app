@@ -1,9 +1,12 @@
-from .model import Users
+from .model import UserModel
 from flask_restful import Resource
-from flask import jsonify
 
 class GetAllUsers(Resource):
     def get(self):
-        users = Users.returnall()
-        print(type(repr(users[0])))
-        return jsonify({'Users': [repr(user) for user in users]})
+        users = UserModel.returnall()
+        return {'Users': [repr(user) for user in users]}
+
+class GetUserInfoByID(Resource):
+    def get(self, iduser):
+        user = UserModel.returnuserinfo(iduser)
+        return {'User': repr(user)}

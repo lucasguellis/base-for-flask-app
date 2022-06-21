@@ -15,5 +15,6 @@ db = SQLAlchemy(app)
 
 
 ## adding routes with resources
-from .users.resource import GetAllUsers
+from .users.resource import GetAllUsers, GetUserInfoByID
 api.add_resource(GetAllUsers, '/users') 
+api.add_resource(GetUserInfoByID, '/user/<iduser>')

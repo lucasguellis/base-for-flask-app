@@ -1,7 +1,7 @@
-from flask import jsonify
 from .. import db
 
-class Users(db.Model):
+class UserModel(db.Model):
+    __tablename__ = 'users'
     iduser = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(45))
     password = db.Column(db.String(45))
@@ -17,10 +17,20 @@ class Users(db.Model):
                 'password': self.password,
                 'name': self.name,
                 'email': self.email,
-                'created': self.created,
+                'created': self.created.strftime('%d/%m/%Y, %H:%M:%S'),
                 'modified': self.modified,
                 'allows': self.allows})
 
     def returnall():
-        r = db.session.query(Users).all()
+        try:
+            r = db.session.query(UserModel).all()
+        except:
+            return None
+        return r
+
+    def returnuserinfo(iduser):
+        try:
+            r = db.session.query(UserModel).filter(UserModel.iduser == iduser).first()
+        except:
+            return None
         return r
