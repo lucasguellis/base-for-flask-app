@@ -1,0 +1,14 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+  
+    <p>Hello world</p>
+
+    {{ ckeditor.load() }}
+
+    <form method="post">
+        {{ ckeditor.create() }}
+        <input type="submit">
+    </form>
+
+{% endblock %}

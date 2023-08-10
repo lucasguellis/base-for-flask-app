@@ -1,5 +1,6 @@
 from .. import db
 
+
 class Users(db.Model):
     iduser = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(45))
@@ -10,6 +11,7 @@ class Users(db.Model):
     modified = db.Column(db.DateTime)
     isadmin = db.Column(db.String(45))
 
+
 def userrepr(self):
     return {'iduser': self.iduser,
             'username': self.username,
@@ -19,6 +21,7 @@ def userrepr(self):
             'created': self.created,
             'modified': self.modified,
             'isadmin': self.isadmin}
+
 
 def returnall():
     r = db.session.query(Users).first()
